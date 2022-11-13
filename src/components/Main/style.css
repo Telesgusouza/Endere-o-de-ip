@@ -1,0 +1,5 @@
+.container {
+  height: 65%;
+  position: relative;
+  z-index: 1;
+}
