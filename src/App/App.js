@@ -1,12 +1,9 @@
-import * as Styled from './style';
-
-import Main from '../components/Main';
 
 function App() {
   return (
-    <Styled.Container>
-      <Main />
-    </Styled.Container>
+    <div className="App">
+      <h1>ola mundo</h1>
+    </div>
   );
 }
 

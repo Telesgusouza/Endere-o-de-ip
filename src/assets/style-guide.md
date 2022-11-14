@@ -18,6 +18,10 @@ The designs were created to the following widths:
 - localização: https://geo.ipify.org/api/v2/country?apiKey=YOUR_API_KEY&ipAddress=8.8.8.8
 - gerar o mapa: https://leafletjs.com
 
+- Leaflet:         https://leafletjs.com/
+- React-Leaflet:   https://react-leaflet.js.org/
+- Ipify:           https://www.ipify.org/
+
 ### Body Copy
 
 - Font size (text input): 18px
