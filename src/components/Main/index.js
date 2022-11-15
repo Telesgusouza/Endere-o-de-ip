@@ -28,50 +28,41 @@ export default function Main() {
         isp: data.data.isp,
       };
 
-
       setInfoIp(infoData);
     }
 
     getApi();
   }, []);
 
-  useEffect(() => {
-
-  }, [])
-
-  
+  useEffect(() => {}, []);
 
   function handleSearch(e) {
     const value = e.target.value;
     setSearchValue(value);
   }
 
-    async function getIp() {
-      const data = await axios
-        .get(
-          `https://api.ipgeolocation.io/ipgeo?apiKey=efe01aad39134dd2bbff761980ad35e7&ip=${searchValue}`
-        )
-        .catch((err) => {
-          console.log(err);
-          alert('Digite um id ou dominio válido');
-          setSearchValue("");
-        })
-  
-      const infoData = {
-        position: [data.data.latitude, data.data.longitude],
-        ip: data.data.ip,
-        city: data.data.city,
-        code: data.data.country_code2,
-        timezone: data.data.time_zone.offset,
-        isp: data.data.isp,
-      };
+  async function getIp() {
+    const data = await axios
+      .get(
+        `https://api.ipgeolocation.io/ipgeo?apiKey=efe01aad39134dd2bbff761980ad35e7&ip=${searchValue}`
+      )
+      .catch((err) => {
+        console.log(err);
+        alert("Digite um id ou dominio válido");
+        setSearchValue("");
+      });
 
-      setInfoIp(infoData);
+    const infoData = {
+      position: [data.data.latitude, data.data.longitude],
+      ip: data.data.ip,
+      city: data.data.city,
+      code: data.data.country_code2,
+      timezone: data.data.time_zone.offset,
+      isp: data.data.isp,
+    };
 
-
-    }
-
-  const position = [-23.683320640109315, -46.659060710406116];
+    setInfoIp(infoData);
+  }
 
   return (
     <>
@@ -86,10 +77,8 @@ export default function Main() {
               onChange={(e) => handleSearch(e)}
             />
 
-            <Styled.ContainerImg
-            onClick={getIp}
-            >
-              <img src={ImgSearch}  />
+            <Styled.ContainerImg onClick={getIp}>
+              <img src={ImgSearch} />
             </Styled.ContainerImg>
           </label>
         </div>
@@ -109,7 +98,7 @@ export default function Main() {
 
           <div>
             <span>fuso horario</span>
-            <h2>UTC-{infoIp.timezone}:00</h2>
+            <h2>UTC{infoIp.timezone}:00</h2>
           </div>
 
           <div>
