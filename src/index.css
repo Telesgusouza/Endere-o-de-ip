@@ -18,3 +18,8 @@ code {
   box-sizing: border-box;
   font-family: 'Rubik', sans-serif;
 }
+
+.map {
+  height: 68vh;
+  width: 100vw;
+}
