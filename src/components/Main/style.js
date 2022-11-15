@@ -19,6 +19,7 @@ export const Container = styled.main`
     color: white;
     margin-bottom: 20px;
     font-size: 1.85em;
+
   }
 
   input {
@@ -95,6 +96,14 @@ export const ContainerInfo = styled.div`
     margin-top: 5px;
     font-size: 1.25em;
     text-transform: capitalize;
+
+    
+    width: 100%;
+    max-width: 200px;
+
+
+    overflow-wrap: break-word;  
+    word-wrap: break-word; 
   }
 
   div {
