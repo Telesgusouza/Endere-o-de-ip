@@ -6,8 +6,6 @@ import { MapContainer, TileLayer, Polygon, Marker, Popup } from "react-leaflet";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-// 123.123.123.123
-
 export default function Main() {
   const [searchValue, setSearchValue] = useState("");
   const [infoIp, setInfoIp] = useState({});
@@ -64,6 +62,27 @@ export default function Main() {
     setInfoIp(infoData);
   }
 
+  function Map({ data }) {
+    return (
+      <MapContainer
+        center={data.position}
+        zoom={15}
+        scrollWheelZoom={true}
+        className="container"
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={data.position}>
+          <Popup>o destino de sua pesquisa</Popup>
+        </Marker>
+      </MapContainer>
+    );
+  }
+
+  console.log(infoIp.position);
+
   return (
     <>
       <Styled.Container>
@@ -72,7 +91,7 @@ export default function Main() {
           <label>
             <input
               type="text"
-              placeholder="Busca por qualquer endereço IP ou domínio"
+              placeholder="Digite um endereço de IP"
               value={searchValue}
               onChange={(e) => handleSearch(e)}
             />
@@ -108,22 +127,7 @@ export default function Main() {
         </Styled.ContainerInfo>
       </Styled.Container>
 
-      {infoIp.position && (
-        <MapContainer
-          center={infoIp.position}
-          zoom={15}
-          scrollWheelZoom={true}
-          className="container"
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          />
-          <Marker position={infoIp.position}>
-            <Popup>o destino de sua pesquisa</Popup>
-          </Marker>
-        </MapContainer>
-      )}
+      {infoIp.position && <Map data={infoIp} />}
     </>
   );
 }
